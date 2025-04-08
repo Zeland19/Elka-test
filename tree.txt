@@ -1,0 +1,29 @@
+const fs = require('fs');
+
+function createTree(levels, filePath) {
+    let tree = [];
+
+    
+    tree.push("                                         W");
+    tree.push("                                          *");
+
+
+    for (let i = 1; i <= levels; i++) {
+        let stars = '@' + ' * '.repeat(i * 2 - 1) + '@';
+        let spaces = ' '.repeat(40 - (i * 2)); 
+        tree.push(spaces + stars);
+    }
+
+    
+    tree.push("                                     TTTTT");
+    tree.push("                                     TTTTT");
+
+    
+    fs.writeFileSync(filePath, tree.join('\n'));
+    console.log(`Ёлка успешно сохранена в файл: ${filePath}`);
+}
+
+
+const levels = 5; 
+const filePath = 'tree.txt'; 
+createTree(levels, filePath);
